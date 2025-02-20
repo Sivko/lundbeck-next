@@ -1,0 +1,50 @@
+name: Deploy Next.js via Docker
+
+on:
+  push:
+    branches:
+      - main # Запуск при пуше в dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: |
+          docker build --build-arg API_CRM=${{ secrets.API_CRM }} -t nextjs-app:latest .
+
+
+      - name: Save Docker Image to Tar File
+        run: |
+          docker save nextjs-app:latest -o nextjs-app.tar
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Transfer Docker Image to Server
+        run: |
+          scp -o StrictHostKeyChecking=no nextjs-app.tar ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/nextjs-app/
+
+      - name: Deploy on Server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} << 'EOF'
+            cd /var/www/nextjs-app
+
+            # Остановим старый контейнер (если есть)
+            docker stop my-nextjs-app && docker rm my-nextjs-app
+
+            # Импортируем новый образ
+            docker load -i nextjs-app.tar
+
+            # Запускаем контейнер
+            docker run -d -p 3000:3000 --name my-nextjs-app nextjs-app
+
+            # Чистим старые образы
+            docker system prune -af
+          EOF
