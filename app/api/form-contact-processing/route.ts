@@ -1,5 +1,10 @@
 import { IContactsResCreateCRM, IContactsFormData, IContactsUploadResponse } from "@/types/contacts-types";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: 'Обратная связь о побочных эффектах',
+  description: '',
+}
 export async function POST(req: Request) {
   const formData = await req.formData();
 
