@@ -1,9 +1,14 @@
-import Form1 from "@/sections/sade-effect-section";
+import SadeEffectSection from "@/sections/sade-effect-section";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: 'Обратная связь о побочных эффектах',
+  description: '',
+}
 export default function SideEffectsPage() {
   return (
     <div className="">
-      <Form1 />
+      <SadeEffectSection />
     </div>
   );
 }
