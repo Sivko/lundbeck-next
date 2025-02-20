@@ -5,14 +5,14 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Копируем package.json и устанавливаем зависимости
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install
 
 # Копируем весь проект
 COPY . .
 
 # Сборка Next.js
-RUN npm run build
+RUN pnpm build
 
 # Запуск Next.js
-CMD ["npm", "run", "start"]
+CMD ["pnpm", "start"]
