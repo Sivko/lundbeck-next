@@ -1,6 +1,9 @@
 # Используем официальный образ Node.js
 FROM node:18-alpine
 
+# Устанавливаем pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
