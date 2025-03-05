@@ -136,7 +136,6 @@ export const Step5: React.FC = () => {
                         label="Дата начала приема препарата"
                         placeholder="ДД.ММ.ГГГГ"
                         fullWidth
-                        margin="normal"
                       />
                     </>
                   )}
@@ -189,7 +188,6 @@ export const Step5: React.FC = () => {
                         label="Когда был прекращен прием препарата?"
                         placeholder="ДД.ММ.ГГГГ"
                         fullWidth
-                        margin="normal"
                       />
                     </>
                   )}

@@ -75,7 +75,6 @@ export const Step4: React.FC = () => {
                   label="Дата начала побочного эффекта?"
                   placeholder="ДД.ММ.ГГГГ"
                   fullWidth
-                  margin="normal"
                 />
               </>
             )}
@@ -115,7 +114,6 @@ export const Step4: React.FC = () => {
                   label="Если разрешился, укажите окончание"
                   placeholder="ДД.ММ.ГГГГ"
                   fullWidth
-                  margin="normal"
                 />
               </>
             )}

@@ -100,7 +100,6 @@ export const Step6: React.FC = () => {
                         label="Дата начала другого заболевания/состояния"
                         placeholder="ДД.ММ.ГГГГ"
                         fullWidth
-                        margin="normal"
                       />
                     </>
                   )}

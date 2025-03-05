@@ -98,7 +98,6 @@ export const Step2: React.FC = () => {
                     label="Дата родов (ожидаемая или фактическая)"
                     placeholder="ДД.ММ.ГГГГ"
                     fullWidth
-                    margin="normal"
                   />
                   <span>или</span>
                   <Controller
