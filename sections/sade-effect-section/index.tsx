@@ -33,7 +33,7 @@ const sadeEffectSection: React.FC = () => {
     }
   };
 
-  const allValues = methods.watch();
+  // const allValues = methods.watch();
 
 
   const handleBack = () => setActiveStep((prev) => prev - 1);
@@ -101,10 +101,10 @@ const sadeEffectSection: React.FC = () => {
         </form>
       </FormProvider>
 
-      <pre>
+      {/* <pre>
         <div className="text-red-200">{JSON.stringify(methods.formState.errors, null, 2)}</div>
         {JSON.stringify(allValues, null, 2)}
-      </pre>
+      </pre> */}
     </div>
   );
 };
