@@ -134,7 +134,7 @@ export const Step5: React.FC = () => {
                       <TextField
                         {...field}
                         label="Дата начала приема препарата"
-                        placeholder="DD-MM-YYYY"
+                        placeholder="ДД.ММ.ГГГГ"
                         fullWidth
                         margin="normal"
                       />
@@ -187,7 +187,7 @@ export const Step5: React.FC = () => {
                       <TextField
                         {...field}
                         label="Когда был прекращен прием препарата?"
-                        placeholder="DD-MM-YYYY"
+                        placeholder="ДД.ММ.ГГГГ"
                         fullWidth
                         margin="normal"
                       />

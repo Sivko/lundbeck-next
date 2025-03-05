@@ -98,7 +98,7 @@ export const Step6: React.FC = () => {
                       <TextField
                         {...field}
                         label="Дата начала другого заболевания/состояния"
-                        placeholder="DD-MM-YYYY"
+                        placeholder="ДД.ММ.ГГГГ"
                         fullWidth
                         margin="normal"
                       />

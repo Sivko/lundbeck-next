@@ -96,7 +96,7 @@ export const Step2: React.FC = () => {
                   <TextField
                     {...field}
                     label="Дата родов (ожидаемая или фактическая)"
-                    placeholder="DD-MM-YYYY"
+                    placeholder="ДД.ММ.ГГГГ"
                     fullWidth
                     margin="normal"
                   />

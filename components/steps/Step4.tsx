@@ -73,7 +73,7 @@ export const Step4: React.FC = () => {
                 <TextField
                   {...field}
                   label="Дата начала побочного эффекта?"
-                  placeholder="DD-MM-YYYY"
+                  placeholder="ДД.ММ.ГГГГ"
                   fullWidth
                   margin="normal"
                 />
@@ -113,7 +113,7 @@ export const Step4: React.FC = () => {
                 <TextField
                   {...field}
                   label="Если разрешился, укажите окончание"
-                  placeholder="DD-MM-YYYY"
+                  placeholder="ДД.ММ.ГГГГ"
                   fullWidth
                   margin="normal"
                 />
