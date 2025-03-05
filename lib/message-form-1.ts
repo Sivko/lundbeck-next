@@ -13,7 +13,7 @@ export interface DataToSend {
   sideEffectCountry: object;
   gender: string;
   isPregnant: string;
-  dateOfBirth: Date | null;
+  dateOfBirth: string | null;
   weekOfBirth: number | null;
   description: string;
   age: number | string;
@@ -27,15 +27,15 @@ export interface DataToSend {
     periodicity: string;
     dose: string;
     customPeriodicity: string;
-    startDate: Date | null;
+    startDate: string | null;
     isContinuePurpose: string;
-    endDate: Date | null;
+    endDate: string | null;
   }[];
   sideEffects?: {
     sideEffectDescription: string;
-    sideEffectStartDate: Date | null;
+    sideEffectStartDate: string | null;
     sideEffectStatus: string;
-    sideEffectEndDate: Date | null;
+    sideEffectEndDate: string | null;
   }[];
   consequences: Record<string, boolean>;
   ateMedicine: string;
@@ -43,15 +43,15 @@ export interface DataToSend {
     name: string;
     reason: string;
     dose: string;
-    dateStart: Date | null;
+    dateStart: string | null;
     isContinue: string;
     additionalDrugs: string;
-    dateEnd: Date | null;
+    dateEnd: string | null;
   }[];
   disease: string;
   diseasesItems?: {
     name: string;
-    dateStart: Date | null;
+    dateStart: string | null;
     status: string;
     isTreatment: string;
     treatmentDescription: string;

@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
-import { Box, FormLabel, Button, TextareaAutosize, RadioGroup, FormControlLabel, Radio, Checkbox, FormControl } from "@mui/material";
+import { Box, FormLabel, Button, TextareaAutosize, RadioGroup, FormControlLabel, Radio, Checkbox, FormControl, TextField } from "@mui/material";
 import { useFormContext, Controller, useFieldArray } from "react-hook-form";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3/AdapterDateFnsV3";
-import { ru } from "date-fns/locale/ru";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3/AdapterDateFnsV3";
+// import { ru } from "date-fns/locale/ru";
 
 interface FormData {
   sideEffects: {
     sideEffectDescription: string; // Пожалуйста опишите побочный эффект
-    sideEffectStartDate: Date | null; // Дата начала побочного эффекта?
+    sideEffectStartDate: string | null; // Дата начала побочного эффекта?
     sideEffectStatus: string; // Каков статус побочного эффекта?
-    sideEffectEndDate: Date | null; // Если разрешился, укажите дату окончания
+    sideEffectEndDate: string | null; // Если разрешился, укажите дату окончания
   }[];
   consequences: Record<string, boolean>; // Потребовалась госпитализация?
 }
@@ -62,14 +62,21 @@ export const Step4: React.FC = () => {
             control={control}
             render={({ field }) => (
               <>
-                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                   <DatePicker
                     {...field}
                     className="md:max-w-[400px] w-full"
                     label="Дата начала побочного эффекта?"
                     onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                   />
-                </LocalizationProvider>
+                </LocalizationProvider> */}
+                <TextField
+                  {...field}
+                  label="Дата начала побочного эффекта?"
+                  placeholder="DD-MM-YYYY"
+                  fullWidth
+                  margin="normal"
+                />
               </>
             )}
           />
@@ -95,14 +102,21 @@ export const Step4: React.FC = () => {
             control={control}
             render={({ field }) => (
               <>
-                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                   <DatePicker
                     {...field}
                     className="md:max-w-[400px] w-full"
                     label="Если разрешился, укажите окончание"
                     onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                   />
-                </LocalizationProvider>
+                </LocalizationProvider> */}
+                <TextField
+                  {...field}
+                  label="Если разрешился, укажите окончание"
+                  placeholder="DD-MM-YYYY"
+                  fullWidth
+                  margin="normal"
+                />
               </>
             )}
           />

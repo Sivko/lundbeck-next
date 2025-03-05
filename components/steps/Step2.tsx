@@ -2,18 +2,13 @@ import { Box, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from "
 import { Controller, useFormContext } from "react-hook-form";
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { ru } from "date-fns/locale";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { useEffect } from "react";
 
 
 interface FormData {
   gender: string; // Пол
   isPregnant: string; // Беременность
-  dateOfBirth: Date | null; // Дата родов
+  dateOfBirth: string | null; // Дата родов
   weekOfBirth: number | null; // Неделя родов
   description: string; // Любая доступная информацию о результате или текущем статусе беременности
   age: number | string; // Возраст
@@ -90,14 +85,21 @@ export const Step2: React.FC = () => {
               <>
                 {/* <FormLabel error={!!fieldState.error} id="dateOfBirth">Дата родов (ожидаемая или фактическая)</FormLabel> */}
                 <div className="flex mt-4 max-md:flex-col gap-2 items-center">
-                  <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                  {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                     <DatePicker
                       {...field}
                       className="md:max-w-[400px] w-full"
                       label="Дата родов (ожидаемая или фактическая)"
                       onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                     />
-                  </LocalizationProvider>
+                  </LocalizationProvider> */}
+                  <TextField
+                    {...field}
+                    label="Дата родов (ожидаемая или фактическая)"
+                    placeholder="DD-MM-YYYY"
+                    fullWidth
+                    margin="normal"
+                  />
                   <span>или</span>
                   <Controller
                     name="weekOfBirth"

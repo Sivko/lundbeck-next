@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { Box, FormLabel, Button, TextareaAutosize, RadioGroup, FormControlLabel, Radio, TextField } from "@mui/material";
 import { useFormContext, Controller, useFieldArray } from "react-hook-form";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3/AdapterDateFnsV3";
-import { ru } from "date-fns/locale/ru";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3/AdapterDateFnsV3";
+// import { ru } from "date-fns/locale/ru";
 
 interface FormData {
   disease: string // Хотели бы вы сообщить о каких-либо других заболеваниях/состояниях на момент возникновения побочного эффекта
   diseasesItems: {
     name: string; // Другое заболевание/состояние
-    dateStart: Date | null; // Дата начала другого заболевания/состояния
+    dateStart: string | null; // Дата начала другого заболевания/состояния
     status: string; // Статус другого заболевания/состояния
     isTreatment: string; // Проводилось ли какое-либо лечение заболевания/состояния
     treatmentDescription: string; // Если лечение проводилось, опишите его
@@ -34,7 +34,7 @@ export const Step6: React.FC = () => {
 
   useEffect(() => {
     if (fields.length === 0) {
-      append({ name: "", dateStart: null, status: "", isTreatment: "", treatmentDescription: ""}); // Добавляем первый обязательный элемент
+      append({ name: "", dateStart: null, status: "", isTreatment: "", treatmentDescription: "" }); // Добавляем первый обязательный элемент
     }
   }, []);
 
@@ -87,14 +87,21 @@ export const Step6: React.FC = () => {
                   control={control}
                   render={({ field }) => (
                     <>
-                      <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                      {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                         <DatePicker
                           {...field}
                           className=" w-full"
                           label="Дата начала другого заболевания/состояния"
                           onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                         />
-                      </LocalizationProvider>
+                      </LocalizationProvider> */}
+                      <TextField
+                        {...field}
+                        label="Дата начала другого заболевания/состояния"
+                        placeholder="DD-MM-YYYY"
+                        fullWidth
+                        margin="normal"
+                      />
                     </>
                   )}
                 />
@@ -169,7 +176,7 @@ export const Step6: React.FC = () => {
       {disease === "Да" && <Button
         variant="contained"
         color="primary"
-        onClick={() => append({ name: "", dateStart: null, status: "", isTreatment: "", treatmentDescription: ""})}
+        onClick={() => append({ name: "", dateStart: null, status: "", isTreatment: "", treatmentDescription: "" })}
         style={{ marginTop: "20px" }}
       >
         Добавить заболевание/состояние

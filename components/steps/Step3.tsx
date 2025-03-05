@@ -4,11 +4,11 @@ import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import Select from "react-select"
 // import { OptionTypeBase } from 'react-select';
 
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { ru } from "date-fns/locale";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
+// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// // import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+// import { ru } from "date-fns/locale";
+// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 import { useEffect } from "react";
 import { dataDrugNames } from "@/data/data-drug-names";
 
@@ -20,9 +20,9 @@ interface FormData {
     periodicity: string; // Как часто пациент получал препарат Лундбек
     dose: string; // Дозировка
     customPeriodicity: string; // Опишите, как часто принимался препарат Лундбек
-    startDate: Date | null; // Когда был начат прием препарата?
+    startDate: string | null; // Когда был начат прием препарата?
     isContinuePurpose: string; // Продолжается ли прием препарата на текущий момент?
-    endDate: Date | null; // Когда был прекращен прием препарата?
+    endDate: string | null; // Когда был прекращен прием препарата?
   }[]
 }
 
@@ -161,14 +161,21 @@ export const Step3: React.FC = () => {
             control={control}
             render={({ field }) => (
               <>
-                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                   <DatePicker
                     {...field}
                     className="w-full"
                     label="Когда был начат прием препарата?"
                     onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                   />
-                </LocalizationProvider>
+                </LocalizationProvider> */}
+                <TextField
+                  {...field}
+                  label="Когда был начат прием препарата?"
+                  placeholder="DD-MM-YYYY"
+                  fullWidth
+                  margin="normal"
+                />
               </>
             )}
           />
@@ -193,14 +200,21 @@ export const Step3: React.FC = () => {
             control={control}
             render={({ field }) => (
               <>
-                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                   <DatePicker
                     {...field}
                     className="w-full"
                     label="Когда был прекращен прием препарата?"
                     onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                   />
-                </LocalizationProvider>
+                </LocalizationProvider> */}
+                <TextField
+                  {...field}
+                  label="Когда был прекращен прием препарата?"
+                  placeholder="DD-MM-YYYY"
+                  fullWidth
+                  margin="normal"
+                />
               </>
             )}
           />}

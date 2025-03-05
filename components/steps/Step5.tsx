@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Box, FormLabel, Button, TextareaAutosize, RadioGroup, FormControlLabel, Radio, TextField } from "@mui/material";
 import { useFormContext, Controller, useFieldArray } from "react-hook-form";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3/AdapterDateFnsV3";
-import { ru } from "date-fns/locale/ru";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3/AdapterDateFnsV3";
+// import { ru } from "date-fns/locale/ru";
 
 interface FormData {
   ateMedicine: string; // Принимал ли пациент другие препараты
@@ -12,10 +12,10 @@ interface FormData {
     name: string; // Укажите название другого препарата, который принимал пациент
     reason: string; // Укажите показание, по которому был назначен препарат Лундбек (причина назначения)
     dose: string; // Ежедневная доза препарата (по возможности укажите единицы измерения)
-    dateStart: Date | null; // Дата начала приема препарата
+    dateStart: string | null; // Дата начала приема препарата
     isContinue: string; // Продолжается ли прием препарата на сегодняшний день?
     additionalDrugs: string; // Принимал ли пациент дополнительный препарат, когда отмечался побочный эффект?
-    dateEnd: Date | null; // Когда был прекращен прием препарата?
+    dateEnd: string | null; // Когда был прекращен прием препарата?
   }[];
 }
 
@@ -66,7 +66,7 @@ export const Step5: React.FC = () => {
       {ateMedicine === "Да" && <Controller
         name={`anyDrugs`}
         control={control}
-        render={({  }) => (
+        render={({ }) => (
           <div className="mt-4">
             {fields.map((item, index) => (
               <Box key={item.id} className="mt-4 border p-2 rounded grid grid-cols-2 gap-4">
@@ -123,14 +123,21 @@ export const Step5: React.FC = () => {
                   control={control}
                   render={({ field }) => (
                     <>
-                      <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                      {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                         <DatePicker
                           {...field}
                           className=" w-full"
                           label="Дата начала приема препарата"
                           onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                         />
-                      </LocalizationProvider>
+                      </LocalizationProvider> */}
+                      <TextField
+                        {...field}
+                        label="Дата начала приема препарата"
+                        placeholder="DD-MM-YYYY"
+                        fullWidth
+                        margin="normal"
+                      />
                     </>
                   )}
                 />
@@ -169,14 +176,21 @@ export const Step5: React.FC = () => {
                   control={control}
                   render={({ field }) => (
                     <>
-                      <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
+                      {/* <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
                         <DatePicker
                           {...field}
                           className=" w-full"
                           label="Когда был прекращен прием препарата?"
                           onChange={(date) => field.onChange(date)} // обязательно для работы react-hook-form
                         />
-                      </LocalizationProvider>
+                      </LocalizationProvider> */}
+                      <TextField
+                        {...field}
+                        label="Когда был прекращен прием препарата?"
+                        placeholder="DD-MM-YYYY"
+                        fullWidth
+                        margin="normal"
+                      />
                     </>
                   )}
                 />
