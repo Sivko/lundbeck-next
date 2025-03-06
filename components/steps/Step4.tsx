@@ -51,7 +51,7 @@ export const Step4: React.FC = () => {
                   className="w-full p-4 border rounded"
                   aria-label="minimum height"
                   minRows={3}
-                  placeholder="Укажите показание, по которому был назначен препарат Лундбек (причина назначения)"
+                  placeholder="Пожалуйста опишите побочный эффект"
                 />
                 {fieldState.error && <p className="text-[#d32f2f]">{fieldState.error.message}</p>}
               </div>
