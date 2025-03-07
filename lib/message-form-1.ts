@@ -63,7 +63,7 @@ export default function generateEmailContent(data: DataToSend): string {
     ?.map(
       (item, index) => `
     Препарат ${index + 1}: <br />
-      - Название: ${item.drugName ? JSON.stringify(item.drugName?.value) : "не указано"} <br />
+      - Название: ${item.drugName ? JSON.stringify(item.drugName) : "не указано"} <br />
       - Номер: ${item.drugNumber || "не указано"} <br />
       - Показание: ${item.purposeDrug || "не указано"} <br />
       - Периодичность: ${item.periodicity} (${item.customPeriodicity || "не указано"}) <br />
