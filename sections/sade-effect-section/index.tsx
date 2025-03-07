@@ -53,6 +53,7 @@ const sadeEffectSection: React.FC = () => {
         'contact[email]': object?.email ?? "",
         'order[name]': 'Форма о побочных эффектах',
         'order[description]': dataToMessage(object),
+        'order[custom_132762]': dataToMessage(object),
         'source_id': '366321',
         'redirect_url': '',
         'token': '1df035e0bf0cf3cb2fc310aef52e5512',
