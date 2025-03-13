@@ -45,6 +45,9 @@ export async function POST(req: Request) {
         "attributes": {
           "name": "Форма обратной связи",
           "description": data.companyName + " " + data.message,
+          "customs": {
+            "custom-132762": data.companyName + " " + data.message,
+          }
         },
         "relationships": {
           "contact": {
