@@ -1,4 +1,4 @@
-import { Box, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup, TextField } from "@mui/material";
+import { Box, Checkbox, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup, TextField } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 import Select from "react-select"
 import { countries } from "../../countries";
@@ -17,6 +17,7 @@ interface FormData {
   country: object; // Страна
   isLundbeckDrugPurchase: string; // Препарат компании Лундбек был приобретен в той же стране, где возник побочный эффект?
   sideEffectCountry: object; // Страна, в которой возник побочный эффект
+  personalDataCheck: boolean; // Согласие на обработку персональных данных
 }
 
 export const Step1: React.FC = () => {
@@ -225,6 +226,22 @@ export const Step1: React.FC = () => {
             </>
           )}
         />}
+
+        <Controller
+          name="personalDataCheck"
+          rules={{ required: "Подтвердите согласие" }}
+          control={control}
+          render={({ field, fieldState }) => (
+            <>
+              <FormControlLabel className="md:w-2/3" {...field} control={<Checkbox checked={field.value} />} label={(<div>
+                Даю&nbsp;<a href="/Consent_Pharmacovigilance_2.pdf" target="_blank" className="text-blue-500 underline">согласие на обработку своих персональных данных</a>&nbsp;в соответствии с&nbsp;
+                <a href="/DPA_pol_3.pdf" target="_blank" className="text-blue-500 underline">Политикой конфиденциальности Представительства компании «Лундбек Экспорт А/С»</a>
+              </div>)} />
+              {fieldState.error && <p className="text-[#d32f2f]">{fieldState.error.message}</p>}
+            </>
+          )}
+        />
+
       </div>
     </Box>
   );

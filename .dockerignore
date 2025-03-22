@@ -1,0 +1,8 @@
+node_modules
+.git
+.next/cache
+.vscode
+Dockerfile
+.dockerignore
+README.md
+nextjs-app.tar

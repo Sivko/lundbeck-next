@@ -43,9 +43,7 @@ jobs:
             docker load -i nextjs-app.tar
 
             # Запускаем контейнер
-            docker run -d -p 3000:3000 --name my-nextjs-app \
-            --env-file /var/www/nextjs-app/.env \
-            nextjs-app
+            docker run -d -p 3000:3000 --name my-nextjs-app nextjs-app
             
             # Чистим старые образы
             docker system prune -af

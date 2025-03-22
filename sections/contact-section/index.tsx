@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import { TextField, Button, Typography, Box, FormControlLabel, Checkbox } from "@mui/material";
 import PhoneInput from "react-phone-input-2";
 import SuccessMsg from "@/components/result-message/SuccessMsg";
 import ErrorSend from "@/components/result-message/ErrorSend";
@@ -121,6 +121,21 @@ const ContactForm: React.FC = () => {
             type="file"
             onChange={(e) => field.onChange(e.target.files)}
           />
+        )}
+      />
+
+      <Controller
+        name="personalDataCheck"
+        rules={{ required: "Подтвердите согласие" }}
+        control={control}
+        render={({ field, fieldState }) => (
+          <>
+            <FormControlLabel className="" {...field} control={<Checkbox checked={field.value} />} label={(<div className="">
+              Даю&nbsp;<a href="/Consent_Feedback_1.pdf" target="_blank" className="text-blue-500 underline">согласие на обработку своих персональных данных</a>&nbsp;в соответствии с&nbsp;
+              <a href="/DPA_pol_3.pdf" target="_blank" className="text-blue-500 underline">Политикой конфиденциальности Представительства компании «Лундбек Экспорт А/С»</a>
+            </div>)} />
+            {fieldState.error && <p className="text-[#d32f2f]">{fieldState.error.message}</p>}
+          </>
         )}
       />
 
