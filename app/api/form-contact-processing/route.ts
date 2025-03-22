@@ -10,6 +10,7 @@ export async function POST(req: Request) {
     phone: formData.get("phone") as string | undefined,
     message: formData.get("message") as string,
     file: formData.getAll("file") as unknown as FileList | undefined,
+    personalDataCheck: formData.get("personalDataCheck") as unknown as boolean,
   };
 
 

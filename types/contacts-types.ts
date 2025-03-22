@@ -5,7 +5,7 @@ export interface IContactsFormData {
   phone?: string;
   message: string;
   file?: FileList;
-  personalDataCheck: boolean
+  personalDataCheck?: boolean;
 }
 
 
