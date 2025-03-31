@@ -2,8 +2,8 @@ name: Deploy Next.js via Docker
 
 on:
   push:
-    branches:
-      - main # Запуск при пуше в dev
+    tags:
+      - 's2-*' # Запуск при любом теге
 
 jobs:
   build:
