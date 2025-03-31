@@ -3,6 +3,11 @@
 API_CRM=TOKEN
 ```
 
+## Push on Server
+```
+bash scripts/front.update.image.sh
+```
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

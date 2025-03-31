@@ -38,15 +38,13 @@ const ContactForm: React.FC = () => {
         method: 'POST',
         body: formData
       }).then(response => response.json());
-
-      if (!response.ok || response.success == false) {
+      console.log(response)
+      if (response.success == false) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      console.log(response)
-
       setStatusResponse(true);
     } catch (error) {
-      console.error('Error:', error);
+      console.error(error);
       setStatusResponse(false);
     }
     setIsLoading(false)
