@@ -13,7 +13,6 @@ export async function POST(req: Request) {
     personalDataCheck: formData.get("personalDataCheck") as unknown as boolean,
   };
 
-
   const responseCreateContact = await fetch('https://app.salesap.ru/api/v1/contacts', {
     headers: {
       'Content-Type': 'application/vnd.api+json',
@@ -31,8 +30,11 @@ export async function POST(req: Request) {
       }
     })
   }).then(response => response.json() as unknown as IContactsResCreateCRM)
+    .catch(error => error.json());
 
-  // console.log("responseCreateContact", responseCreateContact)
+  if (!responseCreateContact?.data?.id) {
+    return Response.json({ success: false, message: "Ошибка создания контакта", detail: responseCreateContact });
+  }
 
   const responseCreateOrder = await fetch('https://app.salesap.ru/api/v1/orders', {
     headers: {
@@ -54,7 +56,7 @@ export async function POST(req: Request) {
           "contact": {
             "data": {
               "type": "contacts",
-              "id": responseCreateContact.data.id
+              "id": responseCreateContact!.data!.id
             }
           }
 
@@ -62,6 +64,11 @@ export async function POST(req: Request) {
       }
     })
   }).then(response => response.json() as unknown as IContactsResCreateCRM)
+    .catch(error => error.json());
+
+  if (!responseCreateOrder?.data?.id) {
+    return Response.json({ success: false, message: "Ошибка создания заказа", detail: responseCreateOrder });
+  }
 
   if (data.file?.[0].size) {
     const json = {
@@ -97,6 +104,5 @@ export async function POST(req: Request) {
 
   }
 
-
-  return Response.json({ data, file: data.file?.[0].name });
+  return Response.json({ succes: true, data, file: data.file?.[0].name });
 }

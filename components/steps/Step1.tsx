@@ -1,7 +1,7 @@
 import { Box, Checkbox, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup, TextField } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 import Select from "react-select"
-import { countries } from "../../countries";
+import { dataCountries } from "@/data/data-countries";
 import PhoneInput from 'react-phone-input-2'
 import { useEffect } from "react";
 
@@ -190,7 +190,7 @@ export const Step1: React.FC = () => {
               <Select
                 {...field}
                 defaultValue={{ "value": "Россия", "label": "Россия" }}
-                options={countries.map((country) => ({ value: country, label: country }))}
+                options={dataCountries.map((country) => ({ value: country, label: country }))}
               />
             </>
           )}
@@ -221,7 +221,7 @@ export const Step1: React.FC = () => {
               <Select
                 {...field}
                 defaultValue={{ "value": "Россия", "label": "Россия" }}
-                options={countries.map((country) => ({ value: country, label: country }))}
+                options={dataCountries.map((country) => ({ value: country, label: country }))}
               />
             </>
           )}

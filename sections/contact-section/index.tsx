@@ -20,7 +20,6 @@ const ContactForm: React.FC = () => {
   const [statusResponse, setStatusResponse] = useState<null | boolean>(null);
   const [isLoading, setIsLoading] = useState(false)
 
-
   const onSubmit = async (data: IContactsFormData) => {
     setIsLoading(true)
     try {
@@ -38,9 +37,9 @@ const ContactForm: React.FC = () => {
       const response = await fetch('/api/form-contact-processing', {
         method: 'POST',
         body: formData
-      });
+      }).then(response => response.json());
 
-      if (!response.ok) {
+      if (!response.ok || response.success == false) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       console.log(response)
