@@ -70,6 +70,7 @@ export const Step2: React.FC = () => {
             <RadioGroup name="isPregnant">
               <FormControlLabel {...field} value="Да" control={<Radio checked={isPregnant === "Да"} />} label="Да" />
               <FormControlLabel {...field} value="Нет" control={<Radio checked={isPregnant === "Нет"} />} label="Нет" />
+              <FormControlLabel {...field} value="Неизвестно" control={<Radio checked={isPregnant === "Неизвестно"} />} label="Неизвестно" />
             </RadioGroup>
             {fieldState.error && <p className="text-[#d32f2f]">{fieldState.error.message}</p>}
           </>
